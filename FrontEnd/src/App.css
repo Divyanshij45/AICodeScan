@@ -1,0 +1,187 @@
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --dark: #0c0c0c;
+  --dark-gray: #343434;
+  --light-gray: #f5f5f5;
+  --white: #ffffff;
+  --success: #4cc9f0;
+  --warning: #f8961e;
+  --error: #f72585;
+  --border-radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Main Layout */
+.app-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-gray);
+}
+
+header {
+  padding: 1rem 2rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+main {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Editor Panel */
+.editor-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code-container {
+  flex: 1;
+  position: relative;
+}
+
+/* Review Panel */
+.review-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.review-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+.empty-state {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray);
+}
+
+/* Markdown Styling */
+.review-content h1,
+.review-content h2,
+.review-content h3 {
+  margin: 1.5rem 0 1rem 0;
+  color: var(--dark);
+}
+
+.review-content p {
+  margin-bottom: 1rem;
+}
+
+.review-content ul,
+.review-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.review-content li {
+  margin-bottom: 0.5rem;
+}
+
+.review-content code:not([class]) {
+  background-color: var(--light-gray);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Fira Code', monospace;
+  color: var(--dark);
+}
+
+.review-content pre {
+  background-color: var(--dark);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.review-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #f8f8f2;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+}
+
+.btn-primary:disabled {
+  background-color: var(--dark-gray);
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+}
