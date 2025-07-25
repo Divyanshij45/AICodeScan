@@ -1,14 +1,25 @@
 const express = require('express');
-const aiRoutes = require('./routes/ai.routes')
-const cors = require('cors')
-const app = express()
+const aiRoutes = require('./routes/ai.routes');
+const cors = require('cors');
 
-app.get('/',(req,res)=>{
-    res.send('Hello World')
-})
+const app = express();
 
-app.use(express.json())
-app.use(cors())
+// ✅ Enable CORS for both local + Vercel
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://ai-code-scan.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
-app.use('/ai', aiRoutes)
-module.exports = app
+// ✅ Parse JSON
+app.use(express.json());
+
+// ✅ Your Routes
+app.use('/ai', aiRoutes);
+
+// Optional root route
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+module.exports = app;
