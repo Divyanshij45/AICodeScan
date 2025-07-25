@@ -1,7 +1,6 @@
-require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const app = express();
 const mainApp = require('./src/app');
 
@@ -12,6 +11,7 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.json());
 // Mount your actual app (assumed to be routers or middleware)
 app.use(mainApp);
 
