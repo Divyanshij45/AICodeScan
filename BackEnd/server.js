@@ -1,15 +1,26 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const app = require('./src/app')
-const express = require('./src/app')
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const mainApp = require('./src/app');
 
+// Enable CORS for your frontend (Vercel)
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://ai-code-scan.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
-app.get('/',(req,res)=>{
-    res.send('Hello World')
-})
+// Mount your actual app (assumed to be routers or middleware)
+app.use(mainApp);
 
+// Root test route
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
-
-app.listen(3000, ()=> {
-    console.log('Server is running on http://localhost:3000')
-} )
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
